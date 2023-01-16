@@ -43,6 +43,7 @@ struct AddCategoryView: View {
             } else {
                 Button(action: {
                     categories.append(Categories(id: UUID(), name: name, color: color, hasDueDate: hasDueDate, listItems: []))
+                    saveDataArray(dataArray: categories)
                     dismiss()
                 }) {
                     Text("Save")
@@ -88,6 +89,7 @@ struct EditCategoriesView: View {
                     categories[idx].name = name
                     categories[idx].color = color
                     categories[idx].hasDueDate = hasDueDate
+                    saveDataArray(dataArray: categories)
                 }
                 dismiss()
             }) {
@@ -106,6 +108,7 @@ struct SortCategoriesView: View {
                 categories.sort {
                     $0.name < $1.name
                 }
+                saveDataArray(dataArray: categories)
                 dismiss()
             }) {
                 Text("Alphabetically Ascending")
@@ -114,6 +117,7 @@ struct SortCategoriesView: View {
                 categories.sort {
                     $0.name > $1.name
                 }
+                saveDataArray(dataArray: categories)
                 dismiss()
             }) {
                 Text("Alphabetically Descending")

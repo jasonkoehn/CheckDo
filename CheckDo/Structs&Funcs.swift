@@ -57,6 +57,7 @@ func saveItems(id: UUID, categories: [Categories], listItems: [ListItems]) -> [C
     if let idx = newCategories.firstIndex(where: {$0.id == id}) {
         newCategories[idx].listItems = listItems
     }
+    saveDataArray(dataArray: newCategories)
     return newCategories
 }
 
