@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		873D8F812975C44C00F6A3FC /* CheckDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873D8F802975C44C00F6A3FC /* CheckDoApp.swift */; };
 		873D8F852975C44D00F6A3FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 873D8F842975C44D00F6A3FC /* Assets.xcassets */; };
-		873D8F892975C44D00F6A3FC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 873D8F882975C44D00F6A3FC /* Preview Assets.xcassets */; };
 		87F9932D2975D0CB00B68F4B /* Structs&Funcs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F9932C2975D0CB00B68F4B /* Structs&Funcs.swift */; };
 		87F993312975D83B00B68F4B /* CategoriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F993302975D83B00B68F4B /* CategoriesListView.swift */; };
 		87F993332975D8AC00B68F4B /* CategoriesListDependentViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F993322975D8AC00B68F4B /* CategoriesListDependentViews.swift */; };
@@ -22,7 +21,6 @@
 		873D8F802975C44C00F6A3FC /* CheckDoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckDoApp.swift; sourceTree = "<group>"; };
 		873D8F842975C44D00F6A3FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		873D8F862975C44D00F6A3FC /* CheckDo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CheckDo.entitlements; sourceTree = "<group>"; };
-		873D8F882975C44D00F6A3FC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		87C415BD2975CC6800DF7F41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		87F9932C2975D0CB00B68F4B /* Structs&Funcs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Structs&Funcs.swift"; sourceTree = "<group>"; };
 		87F993302975D83B00B68F4B /* CategoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListView.swift; sourceTree = "<group>"; };
@@ -70,17 +68,8 @@
 				873D8F842975C44D00F6A3FC /* Assets.xcassets */,
 				873D8F862975C44D00F6A3FC /* CheckDo.entitlements */,
 				87C415BD2975CC6800DF7F41 /* Info.plist */,
-				873D8F872975C44D00F6A3FC /* Preview Content */,
 			);
 			path = CheckDo;
-			sourceTree = "<group>";
-		};
-		873D8F872975C44D00F6A3FC /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				873D8F882975C44D00F6A3FC /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,7 +130,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				873D8F892975C44D00F6A3FC /* Preview Assets.xcassets in Resources */,
 				873D8F852975C44D00F6A3FC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,7 +271,6 @@
 				CODE_SIGN_ENTITLEMENTS = CheckDo/CheckDo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 20230116;
-				DEVELOPMENT_ASSET_PATHS = "\"CheckDo/Preview Content\"";
 				DEVELOPMENT_TEAM = 33MAXP8MNQ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -330,7 +317,6 @@
 				CODE_SIGN_ENTITLEMENTS = CheckDo/CheckDo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 20230116;
-				DEVELOPMENT_ASSET_PATHS = "\"CheckDo/Preview Content\"";
 				DEVELOPMENT_TEAM = 33MAXP8MNQ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
