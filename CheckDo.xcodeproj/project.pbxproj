@@ -17,31 +17,12 @@
 		87F993372975D8DF00B68F4B /* ItemsListDependentViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F993362975D8DF00B68F4B /* ItemsListDependentViews.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		873D8F8F2975C44D00F6A3FC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 873D8F752975C44C00F6A3FC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 873D8F7C2975C44C00F6A3FC;
-			remoteInfo = CheckDo;
-		};
-		873D8F992975C44D00F6A3FC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 873D8F752975C44C00F6A3FC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 873D8F7C2975C44C00F6A3FC;
-			remoteInfo = CheckDo;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		873D8F7D2975C44C00F6A3FC /* CheckDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		873D8F802975C44C00F6A3FC /* CheckDoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckDoApp.swift; sourceTree = "<group>"; };
 		873D8F842975C44D00F6A3FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		873D8F862975C44D00F6A3FC /* CheckDo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CheckDo.entitlements; sourceTree = "<group>"; };
 		873D8F882975C44D00F6A3FC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		873D8F8E2975C44D00F6A3FC /* CheckDoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CheckDoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		873D8F982975C44D00F6A3FC /* CheckDoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CheckDoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87C415BD2975CC6800DF7F41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		87F9932C2975D0CB00B68F4B /* Structs&Funcs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Structs&Funcs.swift"; sourceTree = "<group>"; };
 		87F993302975D83B00B68F4B /* CategoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListView.swift; sourceTree = "<group>"; };
@@ -52,20 +33,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		873D8F7A2975C44C00F6A3FC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		873D8F8B2975C44D00F6A3FC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		873D8F952975C44D00F6A3FC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -87,8 +54,6 @@
 			isa = PBXGroup;
 			children = (
 				873D8F7D2975C44C00F6A3FC /* CheckDo.app */,
-				873D8F8E2975C44D00F6A3FC /* CheckDoTests.xctest */,
-				873D8F982975C44D00F6A3FC /* CheckDoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -138,42 +103,6 @@
 			productReference = 873D8F7D2975C44C00F6A3FC /* CheckDo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		873D8F8D2975C44D00F6A3FC /* CheckDoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 873D8FA52975C44D00F6A3FC /* Build configuration list for PBXNativeTarget "CheckDoTests" */;
-			buildPhases = (
-				873D8F8A2975C44D00F6A3FC /* Sources */,
-				873D8F8B2975C44D00F6A3FC /* Frameworks */,
-				873D8F8C2975C44D00F6A3FC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				873D8F902975C44D00F6A3FC /* PBXTargetDependency */,
-			);
-			name = CheckDoTests;
-			productName = CheckDoTests;
-			productReference = 873D8F8E2975C44D00F6A3FC /* CheckDoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		873D8F972975C44D00F6A3FC /* CheckDoUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 873D8FA82975C44D00F6A3FC /* Build configuration list for PBXNativeTarget "CheckDoUITests" */;
-			buildPhases = (
-				873D8F942975C44D00F6A3FC /* Sources */,
-				873D8F952975C44D00F6A3FC /* Frameworks */,
-				873D8F962975C44D00F6A3FC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				873D8F9A2975C44D00F6A3FC /* PBXTargetDependency */,
-			);
-			name = CheckDoUITests;
-			productName = CheckDoUITests;
-			productReference = 873D8F982975C44D00F6A3FC /* CheckDoUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -186,14 +115,6 @@
 				TargetAttributes = {
 					873D8F7C2975C44C00F6A3FC = {
 						CreatedOnToolsVersion = 14.2;
-					};
-					873D8F8D2975C44D00F6A3FC = {
-						CreatedOnToolsVersion = 14.2;
-						TestTargetID = 873D8F7C2975C44C00F6A3FC;
-					};
-					873D8F972975C44D00F6A3FC = {
-						CreatedOnToolsVersion = 14.2;
-						TestTargetID = 873D8F7C2975C44C00F6A3FC;
 					};
 				};
 			};
@@ -211,8 +132,6 @@
 			projectRoot = "";
 			targets = (
 				873D8F7C2975C44C00F6A3FC /* CheckDo */,
-				873D8F8D2975C44D00F6A3FC /* CheckDoTests */,
-				873D8F972975C44D00F6A3FC /* CheckDoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -224,20 +143,6 @@
 			files = (
 				873D8F892975C44D00F6A3FC /* Preview Assets.xcassets in Resources */,
 				873D8F852975C44D00F6A3FC /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		873D8F8C2975C44D00F6A3FC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		873D8F962975C44D00F6A3FC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,34 +162,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		873D8F8A2975C44D00F6A3FC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		873D8F942975C44D00F6A3FC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		873D8F902975C44D00F6A3FC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 873D8F7C2975C44C00F6A3FC /* CheckDo */;
-			targetProxy = 873D8F8F2975C44D00F6A3FC /* PBXContainerItemProxy */;
-		};
-		873D8F9A2975C44D00F6A3FC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 873D8F7C2975C44C00F6A3FC /* CheckDo */;
-			targetProxy = 873D8F992975C44D00F6A3FC /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		873D8FA02975C44D00F6A3FC /* Debug */ = {
@@ -490,96 +368,6 @@
 			};
 			name = Release;
 		};
-		873D8FA62975C44D00F6A3FC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 33MAXP8MNQ;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
-				MACOSX_DEPLOYMENT_TARGET = 13.1;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jasonkoehn.CheckDoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CheckDo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CheckDo";
-			};
-			name = Debug;
-		};
-		873D8FA72975C44D00F6A3FC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 33MAXP8MNQ;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
-				MACOSX_DEPLOYMENT_TARGET = 13.1;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jasonkoehn.CheckDoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CheckDo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CheckDo";
-			};
-			name = Release;
-		};
-		873D8FA92975C44D00F6A3FC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 33MAXP8MNQ;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
-				MACOSX_DEPLOYMENT_TARGET = 13.1;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jasonkoehn.CheckDoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CheckDo;
-			};
-			name = Debug;
-		};
-		873D8FAA2975C44D00F6A3FC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 33MAXP8MNQ;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
-				MACOSX_DEPLOYMENT_TARGET = 13.1;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jasonkoehn.CheckDoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CheckDo;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -597,24 +385,6 @@
 			buildConfigurations = (
 				873D8FA32975C44D00F6A3FC /* Debug */,
 				873D8FA42975C44D00F6A3FC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		873D8FA52975C44D00F6A3FC /* Build configuration list for PBXNativeTarget "CheckDoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				873D8FA62975C44D00F6A3FC /* Debug */,
-				873D8FA72975C44D00F6A3FC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		873D8FA82975C44D00F6A3FC /* Build configuration list for PBXNativeTarget "CheckDoUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				873D8FA92975C44D00F6A3FC /* Debug */,
-				873D8FAA2975C44D00F6A3FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
