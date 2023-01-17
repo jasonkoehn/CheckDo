@@ -58,7 +58,7 @@ struct CategoriesListView: View {
             }
             .navigationTitle("Categories")
             .listStyle(PlainListStyle())
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+            .searchable(text: $searchText)
             .toolbarBackground(Color(red: 0, green: 0.372549019607843, blue: 0.96078431372549), for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
             .toolbarColorScheme(.dark, for: .navigationBar)

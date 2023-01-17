@@ -138,7 +138,7 @@ struct ColorPickerView: View {
     var colorsArray: [[CGFloat]] = [/*Light Purple*/[0.7690381407737732, 0.3715032637119293, 0.964192807674408, 1.0], /*Purple*/[0.5491169095039368, 0.1990393102169037, 0.7117753028869629, 1.0], /*Indigo*/[0.4955701231956482, 0.31992125511169434, 0.9603580832481384, 1.0], /*Blue*/[0.0, 0.372549019607843, 0.96078431372549, 1.0], /*Cyan*/[0.27905404567718506, 0.6217736601829529, 0.8272541165351868, 1.0], /*Light Green*/[0.5243028998374939, 0.7263622879981995, 0.3240967392921448, 1.0], /*Green*/[0.0, 0.56078431372549, 0.0, 1.0], /*Dark Yellow*/[0.9589917063713074, 0.7886649966239929, 0.2673628330230713, 1.0], /*Orange*/[0.9299656748771667, 0.4523574113845825, 0.18105342984199524, 1.0], /*Red*/[0.9219411611557007, 0.31859707832336426, 0.18143770098686218, 1.0], /*Pink*/[0.6679246425628662, 0.2251381278038025, 0.3653307259082794, 1.0], /*Light Pink*/[0.871661365032196, 0.4708508849143982, 0.6162801384925842, 1.0]]
     @Binding var selection: [CGFloat]
     var body: some View {
-        LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]) {
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))]) {
             ForEach(colorsArray, id: \.self) { color in
                 Button(action: {
                     selection = color
@@ -146,7 +146,7 @@ struct ColorPickerView: View {
                     ZStack {
                         Circle()
                             .foregroundColor(decodeColor(color: color))
-                            .frame(width: 70, height: 70)
+                            .frame(width: 60, height: 60)
                             .padding(8)
                         if selection == color {
                             Image(systemName: "checkmark")
