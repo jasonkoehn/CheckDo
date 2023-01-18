@@ -15,59 +15,58 @@ struct AddCategoryView: View {
     @State private var color: [CGFloat] = [0.0, 0.372549019607843, 0.96078431372549, 1.0]
     @State private var hasDueDate: Bool = false
     var body: some View {
-        VStack {
-            HStack {
-                VStack {
-                    Spacer()
-                    Text("Add Category")
-                        .font(.system(size: 32))
-                        .fontWeight(.bold)
+        ScrollView {
+            VStack {
+                HStack {
+                    Text("Name:")
+                        .font(.system(size: 20))
+                    TextField("", text: $name)
+                        .focused($keyboardFocused)
+                        .font(.system(size: 20))
+                        .textFieldStyle(.roundedBorder)
+                        .onSubmit {
+                            if name != "" {
+                                saveNewCategory()
+                            }
+                        }
+                        .submitLabel(.done)
                 }
-                .frame(height: 40)
+                .padding(10)
+                Toggle(isOn: $hasDueDate) {
+                    Text("Preload Due Date?")
+                }
+                .padding(.horizontal, 10)
+                ColorPickerView(selection: $color)
                 Spacer()
-                VStack {
-                    if name == "" {
-                        Button(action: {
-                            dismiss()
-                        }) {
-                            Text("Cancel")
-                        }
-                    } else {
-                        Button(action: {
-                            categories.append(Categories(id: UUID(), name: name, color: color, hasDueDate: hasDueDate, listItems: []))
-                            saveDataArray(dataArray: categories)
-                            dismiss()
-                        }) {
-                            Text("Save")
-                        }
-                    }
-                    Spacer()
+            }
+            .ignoresSafeArea(.keyboard, edges: .all)
+        }
+        .navigationTitle("Add Category")
+        .toolbar {
+            if name == "" {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Text("Cancel")
                 }
-                .frame(height: 40)
+            } else {
+                Button(action: {
+                    saveNewCategory()
+                }) {
+                    Text("Save")
+                }
             }
-            .padding(.top, 20)
-            .padding(.horizontal, 15)
-            HStack {
-                Text("Name:")
-                    .font(.system(size: 20))
-                TextField("", text: $name)
-                    .focused($keyboardFocused)
-                    .font(.system(size: 20))
-                    .textFieldStyle(.roundedBorder)
-            }
-            .padding(10)
-            Toggle(isOn: $hasDueDate) {
-                Text("Preload Due Date?")
-            }
-            .padding(.horizontal, 10)
-            ColorPickerView(selection: $color)
-            Spacer()
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 keyboardFocused.toggle()
             }
         }
+    }
+    func saveNewCategory() {
+        categories.append(Categories(id: UUID(), name: name, color: color, hasDueDate: hasDueDate, listItems: []))
+        saveDataArray(dataArray: categories)
+        dismiss()
     }
 }
 
@@ -79,48 +78,38 @@ struct EditCategoriesView: View {
     @State var color: [CGFloat]
     @State var hasDueDate: Bool
     var body: some View {
-        VStack {
-            HStack {
-                VStack {
-                    Spacer()
-                    Text("Edit Category")
-                        .font(.system(size: 32))
-                        .fontWeight(.bold)
+        ScrollView {
+            VStack {
+                HStack {
+                    Text("Name:")
+                        .font(.system(size: 20))
+                    TextField("", text: $name)
+                        .font(.system(size: 20))
+                        .textFieldStyle(.roundedBorder)
                 }
-                .frame(height: 40)
+                .padding(10)
+                Toggle(isOn: $hasDueDate) {
+                    Text("Preload Due Date?")
+                }
+                .padding(.horizontal, 10)
+                ColorPickerView(selection: $color)
                 Spacer()
-                VStack {
-                    Button(action: {
-                        if let idx = categories.firstIndex(where: {$0.id == id}) {
-                            categories[idx].name = name
-                            categories[idx].color = color
-                            categories[idx].hasDueDate = hasDueDate
-                            saveDataArray(dataArray: categories)
-                        }
-                        dismiss()
-                    }) {
-                        Text("Save")
-                    }
-                    Spacer()
+            }
+            .ignoresSafeArea(.keyboard, edges: .all)
+        }
+        .navigationTitle("Edit Category")
+        .toolbar {
+            Button(action: {
+                if let idx = categories.firstIndex(where: {$0.id == id}) {
+                    categories[idx].name = name
+                    categories[idx].color = color
+                    categories[idx].hasDueDate = hasDueDate
+                    saveDataArray(dataArray: categories)
                 }
-                .frame(height: 40)
+                dismiss()
+            }) {
+                Text("Save")
             }
-            .padding(.top, 20)
-            .padding(.horizontal, 15)
-            HStack {
-                Text("Name:")
-                    .font(.system(size: 20))
-                TextField("", text: $name)
-                    .font(.system(size: 20))
-                    .textFieldStyle(.roundedBorder)
-            }
-            .padding(10)
-            Toggle(isOn: $hasDueDate) {
-                Text("Preload Due Date?")
-            }
-            .padding(.horizontal, 10)
-            ColorPickerView(selection: $color)
-            Spacer()
         }
     }
 }

@@ -54,11 +54,12 @@ struct AddItemView: View {
     @State private var date: Date = Date()
     @State var hasDueDate: Bool
     var body: some View {
-        Form {
+        List {
             HStack {
                 Text("Name:")
                 TextField("", text: $name)
                     .focused($keyboardFocused)
+                    .textFieldStyle(.roundedBorder)
                     .onSubmit {
                         if name != "" {
                             saveNewItem()
@@ -76,6 +77,7 @@ struct AddItemView: View {
             }
         }
         .navigationTitle("Add Item")
+        .listStyle(.inset)
         .toolbar {
             if name == "" {
                 Button(action: {
@@ -116,10 +118,11 @@ struct EditItemView: View {
     @State var date: Date
     @State var hasDueDate: Bool
     var body: some View {
-        Form {
+        List {
             HStack {
                 Text("Name:")
                 TextField("", text: $name)
+                    .textFieldStyle(.roundedBorder)
             }
             Toggle(isOn: $hasDueDate) {
                 Text("Due Date?")
@@ -131,6 +134,7 @@ struct EditItemView: View {
             }
         }
         .navigationTitle("Edit Item")
+        .listStyle(.inset)
         .toolbar {
             Button(action: {
                 if let idx = listItems.firstIndex(where: {$0.id == id}) {

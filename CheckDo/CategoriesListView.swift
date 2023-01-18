@@ -41,8 +41,10 @@ struct CategoriesListView: View {
                         }
                     }
                     .sheet(isPresented: $showEditCategoriesView) {
-                        EditCategoriesView(categories: $categories, id: category.id, name: category.name, color: category.color, hasDueDate: category.hasDueDate)
-                            .presentationDetents([.medium, .large])
+                        NavigationStack {
+                            EditCategoriesView(categories: $categories, id: category.id, name: category.name, color: category.color, hasDueDate: category.hasDueDate)
+                        }
+                        .presentationDetents([.medium, .large])
                     }
                 }
                 .onMove { indexSet, offset in
@@ -75,7 +77,9 @@ struct CategoriesListView: View {
                 }
             }
             .sheet(isPresented: $showAddCategoryView) {
-                AddCategoryView(categories: $categories)
+                NavigationStack {
+                    AddCategoryView(categories: $categories)
+                }
             }
             .sheet(isPresented: $showSortCategoriesView) {
                 NavigationStack {
