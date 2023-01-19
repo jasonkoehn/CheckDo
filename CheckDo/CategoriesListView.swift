@@ -25,7 +25,7 @@ struct CategoriesListView: View {
                     }
                     .listRowSeparator(.hidden)
                     .listRowBackground(decodeColor(color: category.color))
-                    .swipeActions {
+                    .swipeActions(allowsFullSwipe: false) {
                         Button(role: .destructive, action: {
                             if let idx = categories.firstIndex(where: {$0.id == category.id}) {
                                 categories.remove(at: idx)
