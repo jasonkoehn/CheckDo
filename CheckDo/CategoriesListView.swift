@@ -11,14 +11,14 @@ struct CategoriesListView: View {
     @Environment(\.scenePhase) var scenePhase
     @State private var showAddCategoryView: Bool = false
     @State private var showSortCategoriesView: Bool = false
-    @State private var showEditCategoriesView: Bool = false
+    @State private var selectedRow: SelectedCategoryRow? = nil
     @State var categories: [Categories] = []
     @State private var searchText = ""
     var body: some View {
         NavigationStack {
             List {
                 ForEach(searchResults, id: \.id) { category in
-                    NavigationLink(destination: ItemsListView(categories: $categories, id: category.id, name: category.name, color: category.color, hasDueDate: category.hasDueDate, listItems: colorListItems(listItems: category.listItems, color: category.color))) {
+                    NavigationLink(destination: ItemsListView(categories: $categories, catId: category.id, name: category.name, color: category.color, hasDueDate: category.hasDueDate, listItems: colorListItems(listItems: category.listItems, color: category.color))) {
                         Text(category.name)
                             .font(.system(size: 23))
                             .foregroundColor(.black)
@@ -35,14 +35,14 @@ struct CategoriesListView: View {
                             Text("Delete")
                         }
                         Button(action: {
-                            showEditCategoriesView.toggle()
+                            selectedRow = SelectedCategoryRow(id: category.id, name: category.name, color: category.color, hasDueDate: category.hasDueDate)
                         }) {
                             Text("Edit")
                         }
                     }
-                    .sheet(isPresented: $showEditCategoriesView) {
+                    .sheet(item: $selectedRow) { row in
                         NavigationStack {
-                            EditCategoriesView(categories: $categories, id: category.id, name: category.name, color: category.color, hasDueDate: category.hasDueDate)
+                            EditCategoriesView(categories: $categories, id: row.id, name: row.name, color: row.color, hasDueDate: row.hasDueDate)
                         }
                         .presentationDetents([.medium, .large])
                     }

@@ -11,8 +11,9 @@ struct ItemsListView: View {
     @State private var showAddItemView: Bool = false
     @State private var showSortItemsView: Bool = false
     @State private var showEditItemView: Bool = false
+    @State private var selectedRow: SelectedItemRow? = nil
     @Binding var categories: [Categories]
-    var id: UUID
+    var catId: UUID
     var name: String
     var color: [CGFloat]
     var hasDueDate: Bool
@@ -22,7 +23,7 @@ struct ItemsListView: View {
         NavigationStack {
             List {
                 ForEach(searchResults, id: \.id) { listItem in
-                    ItemsListRowView(id: listItem.id, name: listItem.name, date: listItem.date, hasDueDate: listItem.hasDueDate, checked: listItem.checked, listItems: listItems, categories: $categories, catId: id)
+                    ItemsListRowView(id: listItem.id, name: listItem.name, date: listItem.date, hasDueDate: listItem.hasDueDate, checked: listItem.checked, listItems: listItems, categories: $categories, catId: catId)
                         .listRowSeparator(.hidden)
                         .listRowBackground(decodeColor(color: listItem.color))
                         .swipeActions {
@@ -30,20 +31,20 @@ struct ItemsListView: View {
                                 if let idx = listItems.firstIndex(where: {$0.id == listItem.id}) {
                                     listItems.remove(at: idx)
                                     listItems = colorListItems(listItems: listItems, color: color)
-                                    categories = saveItems(id: id, categories: categories, listItems: listItems)
+                                    categories = saveItems(id: catId, categories: categories, listItems: listItems)
                                 }
                             }) {
                                 Text("Delete")
                             }
                             Button(action: {
-                                showEditItemView.toggle()
+                                selectedRow = SelectedItemRow(id: listItem.id, name: listItem.name, date: listItem.date, hasDueDate: listItem.hasDueDate)
                             }) {
                                 Text("Edit")
                             }
                         }
-                        .sheet(isPresented: $showEditItemView) {
+                        .sheet(item: $selectedRow) { row in
                             NavigationStack {
-                                EditItemView(categories: $categories, catId: id, listItems: $listItems, id: listItem.id, name: listItem.name, date: listItem.date, hasDueDate: listItem.hasDueDate)
+                                EditItemView(categories: $categories, catId: catId, listItems: $listItems, id: row.id, name: row.name, date: row.date, hasDueDate: row.hasDueDate)
                             }
                             .presentationDetents([.medium, .large])
                         }
@@ -51,12 +52,12 @@ struct ItemsListView: View {
                 .onMove { indexSet, offset in
                     listItems.move(fromOffsets: indexSet, toOffset: offset)
                     listItems = colorListItems(listItems: listItems, color: color)
-                    categories = saveItems(id: id, categories: categories, listItems: listItems)
+                    categories = saveItems(id: catId, categories: categories, listItems: listItems)
                 }
                 .onDelete { indexSet in
                     listItems.remove(atOffsets: indexSet)
                     listItems = colorListItems(listItems: listItems, color: color)
-                    categories = saveItems(id: id, categories: categories, listItems: listItems)
+                    categories = saveItems(id: catId, categories: categories, listItems: listItems)
                 }
             }
             .navigationTitle(name)
@@ -80,12 +81,12 @@ struct ItemsListView: View {
             }
             .sheet(isPresented: $showAddItemView) {
                 NavigationStack {
-                    AddItemView(categories: $categories, id: id, color: color, listItems: $listItems, hasDueDate: hasDueDate)
+                    AddItemView(categories: $categories, catId: catId, color: color, listItems: $listItems, hasDueDate: hasDueDate)
                 }
             }
             .sheet(isPresented: $showSortItemsView) {
                 NavigationStack {
-                    SortItemsView(categories: $categories, id: id, color: color, listItems: $listItems)
+                    SortItemsView(categories: $categories, catId: catId, color: color, listItems: $listItems)
                 }
                 .presentationDetents([.medium])
             }

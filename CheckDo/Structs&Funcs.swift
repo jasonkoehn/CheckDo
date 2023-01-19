@@ -24,6 +24,20 @@ struct ListItems: Codable {
     var color: [CGFloat]
 }
 
+struct SelectedCategoryRow: Identifiable {
+    var id: UUID
+    var name: String
+    var color: [CGFloat]
+    var hasDueDate: Bool
+}
+
+struct SelectedItemRow: Identifiable {
+    var id: UUID
+    var name: String
+    var date: Date
+    var hasDueDate: Bool
+}
+
 func saveDataArray(dataArray: [Categories]) {
     let manager = FileManager.default
     guard let managerUrl = manager.urls(for: .documentDirectory, in: .userDomainMask).first else {return}

@@ -47,7 +47,7 @@ struct AddItemView: View {
     @Environment(\.dismiss) var dismiss
     @FocusState private var keyboardFocused: Bool
     @Binding var categories: [Categories]
-    var id: UUID
+    var catId: UUID
     var color: [CGFloat]
     @Binding var listItems: [ListItems]
     @State private var name: String = ""
@@ -102,7 +102,7 @@ struct AddItemView: View {
     func saveNewItem() {
         listItems.append(ListItems(id: UUID(), name: name, date: date, hasDueDate: hasDueDate, checked: false, color: []))
         listItems = colorListItems(listItems: listItems, color: color)
-        categories = saveItems(id: id, categories: categories, listItems: listItems)
+        categories = saveItems(id: catId, categories: categories, listItems: listItems)
         dismiss()
     }
 }
@@ -154,7 +154,7 @@ struct EditItemView: View {
 struct SortItemsView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var categories: [Categories]
-    var id: UUID
+    var catId: UUID
     var color: [CGFloat]
     @Binding var listItems: [ListItems]
     var body: some View {
@@ -203,7 +203,7 @@ struct SortItemsView: View {
     }
     func saveSortedListItems() {
         listItems = colorListItems(listItems: listItems, color: color)
-        categories = saveItems(id: id, categories: categories, listItems: listItems)
+        categories = saveItems(id: catId, categories: categories, listItems: listItems)
         dismiss()
     }
 }
