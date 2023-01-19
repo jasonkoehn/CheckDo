@@ -13,16 +13,22 @@ struct ItemsListRowView: View {
     var date: Date
     var hasDueDate: Bool
     @State var checked: Bool
-    @State var listItems: [ListItems]
+    @Binding var listItems: [ListItems]
     @Binding var categories: [Categories]
     var catId: UUID
+    var color: [CGFloat]
     var body: some View {
         HStack {
             Button(action: {
                 checked.toggle()
-                if let idx = listItems.firstIndex(where: {$0.id == id}) {
-                    listItems[idx].checked = checked
+                let impact = UIImpactFeedbackGenerator(style: .medium)
+                impact.impactOccurred()
+                var newListItems: [ListItems] = listItems
+                if let idx = newListItems.firstIndex(where: {$0.id == id}) {
+                    newListItems[idx].checked = checked
                 }
+                newListItems.sort { !$0.checked && $1.checked }
+                listItems = colorListItems(listItems: newListItems, color: color)
                 categories = saveItems(id: catId, categories: categories, listItems: listItems)
             }) {
                 if checked {

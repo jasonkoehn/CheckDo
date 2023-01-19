@@ -23,7 +23,7 @@ struct ItemsListView: View {
         NavigationStack {
             List {
                 ForEach(searchResults, id: \.id) { listItem in
-                    ItemsListRowView(id: listItem.id, name: listItem.name, date: listItem.date, hasDueDate: listItem.hasDueDate, checked: listItem.checked, listItems: listItems, categories: $categories, catId: catId)
+                    ItemsListRowView(id: listItem.id, name: listItem.name, date: listItem.date, hasDueDate: listItem.hasDueDate, checked: listItem.checked, listItems: $listItems, categories: $categories, catId: catId, color: color)
                         .listRowSeparator(.hidden)
                         .listRowBackground(decodeColor(color: listItem.color))
                         .swipeActions {
@@ -96,7 +96,7 @@ struct ItemsListView: View {
         if searchText.isEmpty {
             return listItems
         } else {
-            return listItems.filter {$0.name.contains(searchText)}
+            return colorListItems(listItems: listItems.filter {$0.name.contains(searchText)}, color: color)
         }
     }
 }
