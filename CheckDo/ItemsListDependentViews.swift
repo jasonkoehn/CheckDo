@@ -27,7 +27,7 @@ struct ItemsListRowView: View {
                 if let idx = newListItems.firstIndex(where: {$0.id == id}) {
                     newListItems[idx].checked = checked
                 }
-                newListItems.sort { !$0.checked && $1.checked }
+                newListItems.sort {!$0.checked && $1.checked}
                 listItems = colorListItems(listItems: newListItems, color: color)
                 categories = saveItems(id: catId, categories: categories, listItems: listItems)
             }) {
@@ -166,33 +166,31 @@ struct SortItemsView: View {
     var body: some View {
         List {
             Button(action: {
-                listItems.sort {
-                    $0.name < $1.name
-                }
+                listItems.sort {$0.name < $1.name}
+                listItems.sort {!$0.checked && $1.checked}
                 saveSortedListItems()
             }) {
                 Text("Alphabetically Ascending")
             }
             Button(action: {
-                listItems.sort {
-                    $0.name > $1.name
-                }
+                listItems.sort {$0.name > $1.name}
+                listItems.sort {!$0.checked && $1.checked}
                 saveSortedListItems()
             }) {
                 Text("Alphabetically Descending")
             }
             Button(action: {
-                listItems.sort {
-                    $0.date < $1.date
-                }
+                listItems.sort {$0.date < $1.date}
+                listItems.sort {$0.hasDueDate && !$1.hasDueDate}
+                listItems.sort {!$0.checked && $1.checked}
                 saveSortedListItems()
             }) {
                 Text("By Due Date Ascending")
             }
             Button(action: {
-                listItems.sort {
-                    $0.date > $1.date
-                }
+                listItems.sort {$0.date > $1.date}
+                listItems.sort {$0.hasDueDate && !$1.hasDueDate}
+                listItems.sort {!$0.checked && $1.checked}
                 saveSortedListItems()
             }) {
                 Text("By Due Date Descending")
