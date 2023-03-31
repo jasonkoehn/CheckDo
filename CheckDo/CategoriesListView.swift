@@ -13,7 +13,6 @@ struct CategoriesListView: View {
     @State private var showAddCategoryView: Bool = false
     @State private var showSortCategoriesView: Bool = false
     @State private var selectedRow: SelectedCategoryRow? = nil
-    @State var categories: [Category] = []
     @State private var searchText = ""
     var body: some View {
         NavigationStack {
