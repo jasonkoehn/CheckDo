@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct Categories: Codable {
+struct Category: Codable {
     var id: UUID
     var name: String
     var color: [CGFloat]
     var hasDueDate: Bool
-    var listItems: [ListItems]
+    var listItems: [ListItem]
 }
 
-struct ListItems: Codable {
+struct ListItem: Codable, Equatable {
     var id: UUID
     var name: String
     var date: Date
@@ -38,16 +38,6 @@ struct SelectedItemRow: Identifiable {
     var hasDueDate: Bool
 }
 
-func saveDataArray(dataArray: [Categories]) {
-    let manager = FileManager.default
-    guard let managerUrl = manager.urls(for: .documentDirectory, in: .userDomainMask).first else {return}
-    let encoder = PropertyListEncoder()
-    let dataArrayUrl = managerUrl.appendingPathComponent("dataArray.plist")
-    manager.createFile(atPath: dataArrayUrl.path, contents: nil, attributes: nil)
-    let encodedData = try! encoder.encode(dataArray)
-    try! encodedData.write(to: dataArrayUrl)
-}
-
 func encodeColor(color: Color) -> [CGFloat] {
     let color = UIColor(color).cgColor
     let components = color.components ?? [0.0, 0.372549019607843, 0.96078431372549, 1.0]
@@ -66,17 +56,8 @@ func formatDate(date: Date) -> String {
     return dateFormatter.string(from: date)
 }
 
-func saveItems(id: UUID, categories: [Categories], listItems: [ListItems]) -> [Categories] {
-    var newCategories: [Categories] = categories
-    if let idx = newCategories.firstIndex(where: {$0.id == id}) {
-        newCategories[idx].listItems = listItems
-    }
-    saveDataArray(dataArray: newCategories)
-    return newCategories
-}
-
-func colorListItems(listItems: [ListItems], color: [CGFloat]) -> [ListItems] {
-    var newListItems: [ListItems] = listItems
+func colorListItems(listItems: [ListItem], color: [CGFloat]) -> [ListItem] {
+    var newListItems: [ListItem] = listItems
     var color: [CGFloat] = color
     let divider: CGFloat = (0.9 / CGFloat(listItems.count))
     for listItem in listItems {

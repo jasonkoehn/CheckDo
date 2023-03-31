@@ -9,16 +9,17 @@ import SwiftUI
 
 struct CategoriesListView: View {
     @Environment(\.scenePhase) var scenePhase
+    @EnvironmentObject var store: Store
     @State private var showAddCategoryView: Bool = false
     @State private var showSortCategoriesView: Bool = false
     @State private var selectedRow: SelectedCategoryRow? = nil
-    @State var categories: [Categories] = []
+    @State var categories: [Category] = []
     @State private var searchText = ""
     var body: some View {
         NavigationStack {
             List {
                 ForEach(searchResults, id: \.id) { category in
-                    NavigationLink(destination: ItemsListView(categories: $categories, catId: category.id, name: category.name, color: category.color, hasDueDate: category.hasDueDate, listItems: colorListItems(listItems: category.listItems, color: category.color))) {
+                    NavigationLink(destination: ItemsListView(catId: category.id, name: category.name, color: category.color, hasDueDate: category.hasDueDate, listItems: colorListItems(listItems: category.listItems, color: category.color))) {
                         Text(category.name)
                             .font(.system(size: 23))
                             .foregroundColor(.black)
@@ -27,9 +28,9 @@ struct CategoriesListView: View {
                     .listRowBackground(decodeColor(color: category.color))
                     .swipeActions(allowsFullSwipe: false) {
                         Button(role: .destructive, action: {
-                            if let idx = categories.firstIndex(where: {$0.id == category.id}) {
-                                categories.remove(at: idx)
-                                saveDataArray(dataArray: categories)
+                            if let idx = store.categories.firstIndex(where: {$0.id == category.id}) {
+                                store.categories.remove(at: idx)
+                                store.saveArray()
                             }
                         }) {
                             Text("Delete")
@@ -42,18 +43,18 @@ struct CategoriesListView: View {
                     }
                     .sheet(item: $selectedRow) { row in
                         NavigationStack {
-                            EditCategoriesView(categories: $categories, id: row.id, name: row.name, color: row.color, hasDueDate: row.hasDueDate)
+                            EditCategoriesView(id: row.id, name: row.name, color: row.color, hasDueDate: row.hasDueDate)
                         }
                         .presentationDetents([.medium, .large])
                     }
                 }
                 .onMove { indexSet, offset in
-                    categories.move(fromOffsets: indexSet, toOffset: offset)
-                    saveDataArray(dataArray: categories)
+                    store.categories.move(fromOffsets: indexSet, toOffset: offset)
+                    store.saveArray()
                 }
                 .onDelete { indexSet in
-                    categories.remove(atOffsets: indexSet)
-                    saveDataArray(dataArray: categories)
+                    store.categories.remove(atOffsets: indexSet)
+                    store.saveArray()
                 }
             }
             .navigationTitle("Categories")
@@ -78,33 +79,25 @@ struct CategoriesListView: View {
             }
             .sheet(isPresented: $showAddCategoryView) {
                 NavigationStack {
-                    AddCategoryView(categories: $categories)
+                    AddCategoryView()
                 }
             }
             .sheet(isPresented: $showSortCategoriesView) {
                 NavigationStack {
-                    SortCategoriesView(categories: $categories)
+                    SortCategoriesView()
                 }
                 .presentationDetents([.medium])
             }
             .task {
-                let manager = FileManager.default
-                let decoder = PropertyListDecoder()
-                guard let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first else {return}
-                let dataArrayUrl = url.appendingPathComponent("dataArray.plist")
-                if let data = try? Data(contentsOf: dataArrayUrl) {
-                    if let response = try? decoder.decode([Categories].self, from: data) {
-                        categories = response
-                    }
-                }
+                store.loadArray()
             }
         }
     }
-    var searchResults: [Categories] {
+    var searchResults: [Category] {
         if searchText.isEmpty {
-            return categories
+            return store.categories
         } else {
-            return categories.filter {$0.name.contains(searchText)}
+            return store.categories.filter {$0.name.contains(searchText)}
         }
     }
 }

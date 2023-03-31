@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		873D8F812975C44C00F6A3FC /* CheckDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873D8F802975C44C00F6A3FC /* CheckDoApp.swift */; };
 		873D8F852975C44D00F6A3FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 873D8F842975C44D00F6A3FC /* Assets.xcassets */; };
+		8754A8F229D64F4500C1D264 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8754A8F129D64F4500C1D264 /* Store.swift */; };
 		87F9932D2975D0CB00B68F4B /* Structs&Funcs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F9932C2975D0CB00B68F4B /* Structs&Funcs.swift */; };
 		87F993312975D83B00B68F4B /* CategoriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F993302975D83B00B68F4B /* CategoriesListView.swift */; };
 		87F993332975D8AC00B68F4B /* CategoriesListDependentViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F993322975D8AC00B68F4B /* CategoriesListDependentViews.swift */; };
@@ -21,6 +22,7 @@
 		873D8F802975C44C00F6A3FC /* CheckDoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckDoApp.swift; sourceTree = "<group>"; };
 		873D8F842975C44D00F6A3FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		873D8F862975C44D00F6A3FC /* CheckDo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CheckDo.entitlements; sourceTree = "<group>"; };
+		8754A8F129D64F4500C1D264 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		87C415BD2975CC6800DF7F41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		87F9932C2975D0CB00B68F4B /* Structs&Funcs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Structs&Funcs.swift"; sourceTree = "<group>"; };
 		87F993302975D83B00B68F4B /* CategoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListView.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				87F993342975D8C900B68F4B /* ItemsListView.swift */,
 				87F993362975D8DF00B68F4B /* ItemsListDependentViews.swift */,
 				87F9932C2975D0CB00B68F4B /* Structs&Funcs.swift */,
+				8754A8F129D64F4500C1D264 /* Store.swift */,
 				873D8F842975C44D00F6A3FC /* Assets.xcassets */,
 				873D8F862975C44D00F6A3FC /* CheckDo.entitlements */,
 				87C415BD2975CC6800DF7F41 /* Info.plist */,
@@ -100,7 +103,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					873D8F7C2975C44C00F6A3FC = {
 						CreatedOnToolsVersion = 14.2;
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8754A8F229D64F4500C1D264 /* Store.swift in Sources */,
 				87F993312975D83B00B68F4B /* CategoriesListView.swift in Sources */,
 				87F993352975D8C900B68F4B /* ItemsListView.swift in Sources */,
 				873D8F812975C44C00F6A3FC /* CheckDoApp.swift in Sources */,
@@ -186,6 +190,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -244,6 +249,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -271,7 +277,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = CheckDo/CheckDo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 202301192;
+				CURRENT_PROJECT_VERSION = 20230330;
 				DEVELOPMENT_TEAM = 33MAXP8MNQ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -296,7 +302,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jasonkoehn.CheckDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -318,7 +324,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = CheckDo/CheckDo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 202301192;
+				CURRENT_PROJECT_VERSION = 20230330;
 				DEVELOPMENT_TEAM = 33MAXP8MNQ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -343,7 +349,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jasonkoehn.CheckDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;

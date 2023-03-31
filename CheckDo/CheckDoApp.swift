@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct CheckDoApp: App {
+    @StateObject var store = Store()
     var body: some Scene {
         WindowGroup {
             CategoriesListView()
+                .environmentObject(store)
         }
     }
 }

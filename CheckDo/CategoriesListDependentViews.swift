@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct AddCategoryView: View {
+    @EnvironmentObject var store: Store
     @Environment(\.dismiss) var dismiss
     @FocusState private var keyboardFocused: Bool
-    @Binding var categories: [Categories]
     @State private var name: String = ""
     @State private var color: [CGFloat] = [0.0, 0.372549019607843, 0.96078431372549, 1.0]
     @State private var hasDueDate: Bool = false
@@ -64,15 +64,15 @@ struct AddCategoryView: View {
         }
     }
     func saveNewCategory() {
-        categories.append(Categories(id: UUID(), name: name, color: color, hasDueDate: hasDueDate, listItems: []))
-        saveDataArray(dataArray: categories)
+        store.categories.append(Category(id: UUID(), name: name, color: color, hasDueDate: hasDueDate, listItems: []))
+        store.saveArray()
         dismiss()
     }
 }
 
 struct EditCategoriesView: View {
+    @EnvironmentObject var store: Store
     @Environment(\.dismiss) var dismiss
-    @Binding var categories: [Categories]
     var id: UUID
     @State var name: String
     @State var color: [CGFloat]
@@ -100,11 +100,11 @@ struct EditCategoriesView: View {
         .navigationTitle("Edit Category")
         .toolbar {
             Button(action: {
-                if let idx = categories.firstIndex(where: {$0.id == id}) {
-                    categories[idx].name = name
-                    categories[idx].color = color
-                    categories[idx].hasDueDate = hasDueDate
-                    saveDataArray(dataArray: categories)
+                if let idx = store.categories.firstIndex(where: {$0.id == id}) {
+                    store.categories[idx].name = name
+                    store.categories[idx].color = color
+                    store.categories[idx].hasDueDate = hasDueDate
+                    store.saveArray()
                 }
                 dismiss()
             }) {
@@ -115,24 +115,24 @@ struct EditCategoriesView: View {
 }
 
 struct SortCategoriesView: View {
+    @EnvironmentObject var store: Store
     @Environment(\.dismiss) var dismiss
-    @Binding var categories: [Categories]
     var body: some View {
         List {
             Button(action: {
-                categories.sort {
+                store.categories.sort {
                     $0.name < $1.name
                 }
-                saveDataArray(dataArray: categories)
+                store.saveArray()
                 dismiss()
             }) {
                 Text("Alphabetically Ascending")
             }
             Button(action: {
-                categories.sort {
+                store.categories.sort {
                     $0.name > $1.name
                 }
-                saveDataArray(dataArray: categories)
+                store.saveArray()
                 dismiss()
             }) {
                 Text("Alphabetically Descending")

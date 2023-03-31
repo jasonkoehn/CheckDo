@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct ItemsListRowView: View {
+    @EnvironmentObject var store: Store
     var id: UUID
     var name: String
     var date: Date
     var hasDueDate: Bool
     @State var checked: Bool
-    @Binding var listItems: [ListItems]
-    @Binding var categories: [Categories]
+    @Binding var listItems: [ListItem]
     var catId: UUID
     var color: [CGFloat]
     var body: some View {
@@ -23,13 +23,13 @@ struct ItemsListRowView: View {
                 checked.toggle()
                 let impact = UIImpactFeedbackGenerator(style: .medium)
                 impact.impactOccurred()
-                var newListItems: [ListItems] = listItems
+                var newListItems: [ListItem] = listItems
                 if let idx = newListItems.firstIndex(where: {$0.id == id}) {
                     newListItems[idx].checked = checked
                 }
                 newListItems.sort {!$0.checked && $1.checked}
                 listItems = colorListItems(listItems: newListItems, color: color)
-                categories = saveItems(id: catId, categories: categories, listItems: listItems)
+                store.saveItems(id: catId, listItems: listItems)
             }) {
                 if checked {
                     Image(systemName: "checkmark.square")
@@ -50,12 +50,12 @@ struct ItemsListRowView: View {
 }
 
 struct AddItemView: View {
+    @EnvironmentObject var store: Store
     @Environment(\.dismiss) var dismiss
     @FocusState private var keyboardFocused: Bool
-    @Binding var categories: [Categories]
     var catId: UUID
     var color: [CGFloat]
-    @Binding var listItems: [ListItems]
+    @Binding var listItems: [ListItem]
     @State private var name: String = ""
     @State private var date: Date = Date()
     @State var hasDueDate: Bool
@@ -106,19 +106,19 @@ struct AddItemView: View {
         }
     }
     func saveNewItem() {
-        listItems.append(ListItems(id: UUID(), name: name, date: date, hasDueDate: hasDueDate, checked: false, color: []))
+        listItems.append(ListItem(id: UUID(), name: name, date: date, hasDueDate: hasDueDate, checked: false, color: []))
         listItems = colorListItems(listItems: listItems, color: color)
-        categories = saveItems(id: catId, categories: categories, listItems: listItems)
+        store.saveItems(id: catId, listItems: listItems)
         dismiss()
     }
 }
 
 struct EditItemView: View {
+    @EnvironmentObject var store: Store
     @Environment(\.dismiss) var dismiss
     @FocusState private var keyboardFocused: Bool
-    @Binding var categories: [Categories]
     var catId: UUID
-    @Binding var listItems: [ListItems]
+    @Binding var listItems: [ListItem]
     var id: UUID
     @State var name: String
     @State var date: Date
@@ -148,7 +148,7 @@ struct EditItemView: View {
                     listItems[idx].date = date
                     listItems[idx].hasDueDate = hasDueDate
                 }
-                categories = saveItems(id: catId, categories: categories, listItems: listItems)
+                store.saveItems(id: catId, listItems: listItems)
                 dismiss()
             }) {
                 Text("Save")
@@ -158,11 +158,11 @@ struct EditItemView: View {
 }
 
 struct SortItemsView: View {
+    @EnvironmentObject var store: Store
     @Environment(\.dismiss) var dismiss
-    @Binding var categories: [Categories]
     var catId: UUID
     var color: [CGFloat]
-    @Binding var listItems: [ListItems]
+    @Binding var listItems: [ListItem]
     var body: some View {
         List {
             Button(action: {
@@ -207,7 +207,7 @@ struct SortItemsView: View {
     }
     func saveSortedListItems() {
         listItems = colorListItems(listItems: listItems, color: color)
-        categories = saveItems(id: catId, categories: categories, listItems: listItems)
+        store.saveItems(id: catId, listItems: listItems)
         dismiss()
     }
 }
